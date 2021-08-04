@@ -1,0 +1,127 @@
+<div class= "modal" [ngStyle]="{'display': pedidosService.ocultoDetail}" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class= "modal-content">
+            <!--Empieza el formulario addPedidoService.oculto-->
+            <form [formGroup]='formPedido' novalidate>
+            <!--Modal Header-->
+            <div class="modal-header">
+                <h4 class="modal-title">Detalle del Pedido: {{pedidoActual.pedidoId}}</h4>
+                <button (click)="ocultarModal()" type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!--Modal Body-->
+            <div class="modal-body" >
+                <!--Card de Cliente-->
+                <div class="card" id="tarjeta" >
+                    <h5>Datos del cliente</h5>
+                    <!--Nombre-->
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">Nombre</label>
+                        <div class="col-8">
+                            <input class="form-control" formControlName="nombreCliente" type="text"  readonly="readonly">
+                        </div>
+                    </div>
+                    <!--Correo-->
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">Correo</label>
+                        <div class="col-8">
+                            <input class="form-control" type="email" formControlName="correo" readonly="readonly">
+                        </div>
+                    </div>
+                    <!--Telefono-->
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">Teléfono</label>
+                        <div class="col-8">
+                            <input class="form-control" type="tel" formControlName="telefono" readonly="readonly">
+                        </div>
+                    </div>
+                </div> 
+                <br>
+                <!--Card de Cliente-->
+                <div class="card" id="tarjeta" >
+                    <h5>Datos del pedido</h5>
+                    <!--Fecha de ingreso-->
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">Fecha de ingreso</label>
+                        <div class="col-8">
+                            <input class="form-control" formControlName="fechaDeIngreso" type="date" readonly="readonly" >
+                        </div>
+                    </div>
+                    <!--Fecha de entrega-->
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">Fecha de entrega</label>
+                        <div class="col-8">
+                            <input class="form-control" formControlName="fechaDeEntrega" type="date" readonly="readonly" >
+                        </div>
+                    </div>
+                    <!--Nombre del pedido-->
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">Nombre del pedido</label>
+                        <div class="col-8">
+                            <input class="form-control" type="type" formControlName="nombrePedido" readonly="readonly">
+                        </div>
+                    </div>
+                    <!--Presupuesto-->
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">Presupuesto</label>
+                        <div class="col-8">
+                            <input class="form-control" type="number" formControlName="presupuesto" readonly="readonly">
+                        </div>
+                    </div>
+                    <!--Estado del pedido-->
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" type="dropdown">Estado del pedido</label>
+                        <div class="col-8">
+                            <select class="form-control" readonly="readonly"> 
+                                <option value = "Recibido">Recibido</option>
+                                <option value = "En proceso">En proceso</option>
+                                <option value = "Finalizado" >Finalizado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--Estado Valorico ($)-->
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" type="dropdown">Estado del pago</label>
+                        <div class="col-8">
+                            <select class="form-control" #estado readonly="readonly"> 
+                                <option value = "No pagado">No pagado</option>
+                                <option value = "Abono">Abono</option>
+                                <option value = "Pagado">Pagado</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--Si se selecciona ABONO se solicita ingresar la cantidad-->
+                    <div *ngIf="estado.value === 'Abono'">
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Cantidad Abonada</label>
+                            <div class="col-8">
+                                <input class="form-control" formControlName="abono" type="number" readonly="readonly" >
+                            </div>
+                        </div>
+                    </div>
+                     <!--Indicaciones-->
+                     <div class="form-group row">
+                        <label class="col-4 col-form-label">Indicaciones</label>
+                        <div class="col-8">
+                            <input class="form-control" type="text" formControlName="indicaciones" readonly="readonly">
+                        </div>
+                    </div>
+                    <!--Adjuntar Imagen-->
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1" class="col-4 col-form-label">Imagen</label>
+                        <div class="col-8">
+                        </div>
+                        <a *ngIf="previsualizacion"  href="{{previsualizacion}}">
+                        <img class="center" [src]="_DomSanitizationService.bypassSecurityTrustUrl(previsualizacion)" width="300px">
+                        </a>
+                    </div>
+                </div>   
+            <!--Modal footer-->
+            <div class="modal-footer">
+                <button (click)="ocultarModal()" type="button"  class="btn btn-danexampleModalger">Cerrar</button>
+            </div>
+        </div>
+        </form>
+        </div>
+    </div>
+</div>

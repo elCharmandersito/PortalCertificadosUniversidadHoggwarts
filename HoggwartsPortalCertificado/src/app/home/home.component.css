@@ -1,0 +1,152 @@
+@import url(https://fonts.googleapis.com/css?family=Calibri:400,300,700);
+
+@media(max-width:768px) {
+    .card {
+        width: 90%
+    }
+}
+
+.footer {    
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;    
+    font-size: x-small;
+    color: black
+}
+
+.main {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding-top: 2rem;
+    padding-bottom: 1rem;
+    width: 100% !important;
+}
+
+.pageContent {
+    padding: 0.5rem 2rem;
+}
+
+.card-container{    
+    
+    display: flex;
+    justify-content: center;
+    padding-top: 0.5rem;
+    padding-bottom: 3rem;
+    
+}
+
+/* CSS PARA CARD CON IMAGEN DE QUIENES SOMOS  */
+
+.box .text {
+    position: absolute;
+    text-align: center;
+    margin: 50px 0;
+    background: #297ea583;
+    border-radius: 25px;
+    color: #fff;
+    width: 35%; /* Set the width of the positioned div */
+    height: 55%;
+    font-size: 3em;
+}
+
+.box2 .text2 {
+    position: absolute;
+    text-align: center;
+    margin: 80px 40%;
+    background: #297ea583;
+    border-radius: 12px;
+    color: #fff;
+    width: 55%; /* Set the width of the positioned div */
+    height: 30%;
+    font-size: 1.2em;
+}
+
+.container-info{
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+}
+
+#cardInfo {
+    padding-top: 0.1rem;
+    padding-bottom: 0.5rem;
+}
+
+/*  FIN CSS PARA CARD CON IMAGEN DE QUIENES SOMOS  */
+
+/*  INICIO CSS PESTAÑA PRODUCTOS  */
+
+.informacionItems{
+    font-size: 1.5rem;
+    align-items: center;
+    text-align: center;
+}
+
+.descripcionProducto{
+    font-size: 1rem;
+    align-items: center;
+    text-align: justify;
+}
+
+/*======================
+    404 page
+=======================*/
+
+
+.page_404 { 
+    padding:40px 0; background:#fff; font-family: 'Arvo', serif;
+}
+
+.page_404  img{ 
+    width:100%;
+}
+
+.four_zero_four_bg{
+ 
+    background-image: url(https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif);
+    height: 400px;
+    background-position: center;
+}
+ 
+ 
+ .four_zero_four_bg h1{
+    font-size:80px;
+ }
+ 
+    .four_zero_four_bg h3{
+	    font-size:80px;
+    }
+			 
+	.link_404{			 
+	    color: #fff!important;
+        padding: 10px 20px;
+        background: #39ac31;
+        margin: 20px 0;
+        display: inline-block;
+    }
+
+	.contant_box_404{ 
+        margin-top:-50px;
+    }
+
+
+/*  FIN CSS PESTAÑA PRODUCTOS  */
+
+
+/* CARRUSEL DE IMAGENES */
+
+.cardCarrusel {
+    display: flex;
+    justify-content: center;
+}
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+    border-radius: 5px 5px 0 0;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px; /* 5px rounded corners */
+    color: black;
+}

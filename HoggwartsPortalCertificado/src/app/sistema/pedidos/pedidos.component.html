@@ -1,0 +1,78 @@
+<div class="d-flex" id="wrapper">
+
+  <!-- Sidebar -->
+  <div class="bg-light border-right" id="sidebar-wrapper" style="width: 14%;">
+
+    <div class="sidebar-heading" id="logo">
+      <a href="home"> <img src="../assets/logo.jpg" width="100"></a>
+    </div>
+    <div class="list-group list-group-flush" id="menuLista">
+      <a class="list-group-item list-group-item-action bg-light" href="#"><b>Pedidos</b></a>
+      <a class="list-group-item list-group-item-action bg-light" href="#">Productos</a>
+      <a class="list-group-item list-group-item-action bg-light" href="#">Insumos</a>
+      <a class="list-group-item list-group-item-action bg-light" href="#">Contactos</a>
+      <a class="list-group-item list-group-item-action bg-light" href="#">Calendario</a>
+      <a class="list-group-item list-group-item-action bg-light" href="#">Informes</a>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+
+    <nav class="navbar navbar-dark bg-dark " id="navbar">
+      <h1 id="titulo">Sistema de Gestión DuctOS</h1>
+      <button type="button" class="btn btn-outline-light" id="sesion" (click)="cerrarSesion()">Cerrar sesión</button>
+    </nav>
+
+    <section class="content">
+      <!--Aqui van las migas de pan, pero creo que no las necesitaremos-->
+      <br>
+      <h3 id="subtitulo"> Gestión de Pedidos </h3>
+      <div class="card mb-3 text-center">
+        <div class="card-body text-primary">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Fecha de ingreso</th>
+                  <th scope="col">Fecha de entrega</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Teléfono de contacto</th>
+                  <th style="text-align: left"><button class="btn btn-success" type="button"
+                      (click)="abrirModal()">Añadir</button></th>
+                </tr>
+              </thead>
+              <tbody *ngIf="pedidosCargados">
+                <tr *ngFor="let item of pedidos | paginate: {itemsPerPage: 10, currentPage: p, totalItems: pedidos.length} ">
+                  <th>{{item.pedidoId}}</th>
+                  <td>{{item.fechaIngreso.toString().split('T')[0]}}</td>
+                  <td>{{item.fechaEntrega.toString().split('T')[0]}}</td>
+                  <td>{{item.estadoDelPedido}}</td>
+                  <td>{{item.telefono}}</td>
+                  <td>
+                    <div class="btn-toolbar">
+                      <button type="button" class="btn btn-primary" (click)="detallePedido(item)" id="botones">Detalle</button>
+                      <button class="btn btn-warning" type="button" id="botones"
+                        (click)="abrirModalEditar(item)">Editar</button>
+                      <button class="btn btn-danger" type="button" (click)="borrarPedido(item)"
+                        id="botones">Eliminar</button>
+
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+
+<app-add-pedido [getPedidos]="obtenerFuncion"></app-add-pedido>
+<app-edit-pedido *ngIf="pedidosService.ocultoEdit == 'block'"></app-edit-pedido>
+<app-detail-pedido *ngIf="pedidosService.ocultoDetail == 'block'"></app-detail-pedido>

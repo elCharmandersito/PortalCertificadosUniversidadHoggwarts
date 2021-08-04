@@ -1,0 +1,147 @@
+<div class="modal" data-target="#modal" [ngStyle]="{'display': addPedidoService.oculto}" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <!--Empieza el formulario addPedidoService.oculto-->
+            <form [formGroup]='formPedido' (ngSubmit)="saveData()" novalidate>
+                <!--Modal Header-->
+                <div class="modal-header">
+                    <h3 class="modal-title">Crear Pedido</h3>
+                    <button (click)="ocultarModal()" type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!--Modal Body-->
+                <div class="modal-body">
+                    <div class="card" id="tarjeta">
+                        <!--Fecha de ingreso-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">
+                                <h6>Fecha de ingreso</h6>
+                            </label>
+                            <div class="col-8">
+                                <input class="form-control" formControlName="fechaDeIngreso" type="text"
+                                    readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!--Card de Cliente-->
+                    <div class="card" id="tarjeta">
+                        <h5>Datos del cliente</h5>
+                        <!--Nombre-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Nombre</label>
+                            <div class="col-8">
+                                <input class="form-control" formControlName="nombreCliente" type="text">
+                            </div>
+                        </div>
+                        <!--Correo-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Correo</label>
+                            <div class="col-8">
+                                <input class="form-control" type="email" formControlName="correo"
+                                    placeholder="victor@gmail.com">
+                            </div>
+                        </div>
+                        <!--Telefono-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Teléfono</label>
+                            <div class="col-8">
+                                <input class="form-control" type="tel" formControlName="telefono"
+                                    placeholder="984175628">
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <!--Card de Cliente-->
+                    <div class="card" id="tarjeta">
+                        <h5>Datos del pedido</h5>
+                        <!--Fecha de entrega-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Fecha de entrega</label>
+                            <div class="col-8">
+                                <input class="form-control" data-date-format="DD MMMM YYYY"
+                                    formControlName="fechaDeEntrega" type="date">
+                            </div>
+                        </div>
+                        <!--Nombre del pedido-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Nombre del pedido</label>
+                            <div class="col-8">
+                                <input class="form-control" type="type" formControlName="nombrePedido">
+                            </div>
+                        </div>
+                        <!--Presupuesto-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Presupuesto</label>
+                            <div class="col-8">
+                                <input class="form-control" type="number" formControlName="presupuesto" placeholder="$">
+                            </div>
+                        </div>
+
+                        <!--Estado del pedido-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label" type="dropdown">Estado del pedido</label>
+                            <div class="col-8">
+                                <select class="form-control" formControlName="estadoDelPedido">
+                                    <option value="Recibido" selected="selected">Recibido</option>
+                                    <option value="En proceso">En proceso</option>
+                                    <option value="Finalizado">Finalizado</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--Estado Valorico ($)-->
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label" type="dropdown">Estado del pago</label>
+                            <div class="col-8">
+                                <select class="form-control" #estado formControlName="estadoDePago">
+                                    <option value="No pagado">No pagado</option>
+                                    <option value="Abono">Abono</option>
+                                    <option value="Pagado">Pagado</option>
+                                </select>
+                            </div>
+                            <!--Si se selecciona ABONO se solicita ingresar la cantidad-->
+                            <div *ngIf="estado.value === 'Abono'">
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">Cantidad Abonada</label>
+                                    <div class="col-8">
+                                        <input class="form-control" formControlName="abono" type="number"
+                                            placeholder="$">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Indicaciones-->
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-4 col-form-label">Indicaciones</label>
+                            <div class="col-8">
+                                <input class="form-control" type="text" formControlName="indicaciones">
+                            </div>
+                        </div>
+                            <!--Adjuntar Imagen-->
+                        <div class="form-group">
+                            <label for="exampleFormControlFile1" class="col-4 col-form-label">Adjuntar Imagen</label>
+                            <div class="col-8">
+                                <input enctype="multipart/form-data" (change)="capturarFile($event)" type="file" formControlName="URLImagen" class="form-control-file" id="exampleFormControlFile1">
+                                    <!--formControlName="URLImagen"-->
+                            </div>
+
+                            <img *ngIf="previsualizacion" class="center" [src]="_DomSanitizationService.bypassSecurityTrustUrl(previsualizacion)" width="300px">
+
+                        </div>
+                        
+                    </div>
+                    <br>
+                    <!--Modal footer-->
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" (click)="mostrarMensaje()">Guardar</button>
+                        <button (click)="ocultarModal()" type="button" style="background-color: red; color: white;"
+                            class="btn btn-danexampleModalger">Cerrar</button>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<app-confirmacion></app-confirmacion>

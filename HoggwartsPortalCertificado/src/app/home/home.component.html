@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark logo-nav-container">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../assets/logoHogwarts.png" alt="Hoggarts Logo" width="75">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <li class="nav-item">
+            <a class="btn text-white" aria-current="page"
+              (click)="changePage('off'); changeStateContent('inicio')">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn text-white" aria-current="page"
+              (click)="changePage('off'); changeStateContent('about')">¿Quiénes somos?</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn text-white" aria-current="page"
+              (click)="changePage('off'); changeStateContent('contactanos')">Contactanos</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn text-white" aria-current="page" href="login">Ingreso Funcionarios</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+
+  <main class="main">
+    <div class="card">
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="../assets/img_01.jpg" class="d-block w-100" alt="Imagen ductos 1"
+              style="height: 500px; image-rendering: pixelated;">
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/img_02.jpg" class="d-block w-100" alt="Imagen ductos 2"
+              style="height: 500px; image-rendering: pixelated;">
+          </div>
+          <div class="carousel-item">
+            <img src="../assets/img_03.jpg" class="d-block w-100" alt="Imagen ductos 3"
+              style="height: 500px; image-rendering: pixelated;">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </main>
+  <br>
+  <br>
+
+  <div class="pageContent" style="text-align: center;">
+
+    <div class="inicio" *ngIf="showInfo.infoInicio">
+      <div class="row" style="align-items: center;">
+        <div class="col-sm">
+          <img src="../assets/quienes_somos.png" alt="sobre_nosotros" width="200">
+        </div>
+        <div class="col-sm">
+          <img src="../assets/carta.png" alt="Carta" width="250">
+        </div>
+        <div class="col-sm">
+          <img src="../assets/castillo.png" alt="check" width="250">
+        </div>
+      </div>
+
+      <div class="row" style="align-items: center;">
+        <div class="col-sm">
+          <span style="font-size: 1.5em;"><strong>¿Quienes Somos?</strong></span>
+        </div>
+        <div class="col-sm">
+          <span style="font-size: 1.5em;"><strong>Inscribete</strong></span>
+        </div>
+        <div class="col-sm">
+          <span style="font-size: 1.5em;"><strong>Visitanos</strong></span>
+        </div>
+      </div>
+
+      <div class="row" style="align-items: center; text-align: justify;">
+        <div class="col-sm">
+          <span>
+            <br>
+            La universidad Hogwarts de Magia y Hechicería es una de las más
+            prestigiosas universidades de magía de nuestro país, en la cual
+            asisnten jóvenes magos para desarrollar sus habilidades mágicas.
+          </span>
+        </div>
+        <div class="col-sm">
+          <span>
+            <br>
+            Para aquellos jóvenes valientes y aventureros que desean estudiar
+            en nuestras aulas, comunicate con nosotros y haznos saber tu dedicación
+            y entuasismo para formar parte de nuestro prestigioso centro mágico.
+          </span>
+        </div>
+        <div class="col-sm">
+          <span>
+            <br>
+            ¿Deseas conocer tu futuro centro de estudio y experimentar cosas nunca
+            antes vistas?, pues enhorabuena por que puedes visitar nuestro centro
+            de estudio e indagar hasta lo mas profundo de sus rincones.
+          </span>
+        </div>
+      </div>
+      <br><br><br>
+    </div>
+
+    <div class="sobre_nosotros" *ngIf="showInfo.infoAbout">
+
+      <div class="card bg-dark text-white">
+        <img class="card-img" src="../assets/hogwarts_panoramica.jpg" width="500" height="250"
+          style="image-rendering: optimizeQuality;" alt="Card image">
+        <div class="card-img-overlay box">
+          <h1 class="card-title text">Unete a la aventura</h1>
+        </div>
+        <div class="card-img-overlay box2">
+          <h1 class="card-title text2" style="text-align: bottom; text-justify: auto;">
+            Hogwarts esta esperando por aquellos jóvenes valientes y
+            aventuros para formar parte de su prestigioso centro de estudio
+          </h1>
+        </div>
+      </div>
+      <hr>
+      <div class="card" id="cardInfo">
+        <div class="container-info">
+          <nav>
+            <div class="nav nav-tabs justify-content-center" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home"
+                type="button" role="tab" aria-controls="nav-home" aria-selected="true">Nuestra Historia</button>
+              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile"
+                type="button" role="tab" aria-controls="nav-profile" aria-selected="false">¿Por qué elegirnos?</button>
+              <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact"
+                type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Comunícate con
+                nosotros</button>
+            </div>
+          </nav>
+          <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+              <br>
+              Hogwarts es una de las tres escuelas más importantes de Magia y Hechicería de nuestro país
+              en la cual entrena a personas con habilidades mágicas para que se conviertan en magos destacados
+              por mas de 2.500 años
+            </div>
+            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+              <br>
+              Somos la Universidad de Magia y Hechiría con mayor prestigio de las 3 presentes en el país,
+              nuestros estandares y conocimientos son perfeccionados y enseñados a manos de los mejores
+              magos de nuestra región.
+            </div>
+            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+              <br>
+              Contactanos a nuestro correo : estudiaEnHogarts@recepcion.postulantes.com<br>
+              Estarenos esperando todos los interesados y futuros postulantes.
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+    <div class="contactanos" *ngIf="showInfo.infoContactanos">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>Comunicate con nosotros</h4>
+            <hr>
+          </div>
+          <div class="col-md-4">
+            <div class="address">
+
+              <h5>Dirección:</h5>
+              <ul class="list-unstyled">
+                <li> Universidad Hogwarts de Magia y Hechicería</li>
+                <li> PO Box 95645</li>
+                <li> Escocia, NM 5688-3321</li>
+              </ul>
+            </div>
+            <div class="email">
+              <h5>Email:</h5>
+              <ul class="list-unstyled">
+                <li> estudiaEnHogarts@recepcion.com</li>
+                <li> hogwartsUniversity@recepcion.com</li>
+              </ul>
+            </div>
+            <div class="phone">
+              <h5>Telefono:</h5>
+              <ul class="list-unstyled">
+                <li> +91- 880025667834</li>
+                <li> +91- 880034987534</li>
+              </ul>
+            </div>
+            <hr>
+            <div class="social">
+              <ul class="list-inline list-unstyled">
+                <li class="list-inline-item">
+                  <a href="#"><i class="fa fa-facebook-square fa-2x"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fa fa-google-plus-square fa-2x"></i></a>
+                </li>
+                <li class="list-inline-item">
+                  <a href="#"><i class="fa fa-youtube-play fa-2x"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <div class="card">
+              <div class="card-body">
+                <form>
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <input id="Full Name" name="Full Name" placeholder="Nombre Completo" class="form-control" type="text">
+                      <br>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                      <br>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="form-group col-md-6">
+                      <input id="Mobile No." name="Mobile No." placeholder="Número telefónico" class="form-control"
+                        required="required" type="text">
+                      <br>
+                      </div>
+                    
+                      <div class="form-group col-md-6">
+                        <select id="inputState" class="form-control">
+                        <option selected>Indicanos el motivo..</option>
+                        <option> Postulación</option>
+                        <option> Consultas</option>
+                        <option> Reclamos</option>
+                        <option> Visitar Centro</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                      <br>
+                      <textarea id="comment" name="comment" cols="40" rows="5" placeholder="Tu mensaje"
+                        class="form-control"></textarea>
+                    </div>
+
+                  </div>
+
+                  <br>
+
+                  <div class="form-row">
+                    <button type="button" class="btn btn-danger">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <br>
+  <br>
+
+  <footer class="footer py-0 bg-dark fixed-bottom text-center">
+    <div class="container">
+      <span class="text-white">Draco dormiens nunquam titilándus</span>
+      <br>
+      <span class="text-white">Universidad Hogwarts de Magia y Hechicería - Todos los derechos reservados © 2021</span>
+    </div>
+  </footer>
+
+</body>
+
+</html>

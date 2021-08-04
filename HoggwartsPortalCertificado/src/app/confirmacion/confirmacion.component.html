@@ -1,0 +1,19 @@
+<div class= "modal" [ngStyle]="{'display':  mostrarConfirmacionService.oculto}" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirmación</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p><b>¡El pedido se ha guardado exitosamente! </b><br>Su numero de pedido es: <b>{{mostrarConfirmacionService.cod}}</b></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="ocultarModal()">Aceptar</button>
+          <button type="button" class="btn btn-secondary" (click)="ocultarModal()" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+</div>
